@@ -1,11 +1,21 @@
 <!doctype html>
-<html class="no-js" lang="en" dir="ltr">
+
+<!-- ng-app says initialize the Angular app through the angular script 
+    
+    You could also use:
+        data-ng-app or
+        data-ng-app=""
+    
+    It still works
+
+-->
+<html ng-app class="no-js" lang="en" dir="ltr">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
+    <title>First Learning of Angular</title>
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
     <style>
@@ -16,16 +26,54 @@
 
 <body>
     <div class="row large-expand">
-        <div class="small-4 large-offset-4 columns">
-            <img class="thumbnai" src="img/Victor.png" />
-        </div>
-    </div>
-    <div class="row">
+        
 
-        <div class="small-4 large-offset-2 columns">Offset 2 on large</div>
-        <div class="small-4 columns">4 columns</div>
-    </div>
+        <!--   
+            <input data-ng-model = "name" /> {{ name }}
+            
+            Says: Create in memory data property name called name(in quotes)
+            then BIND that property to the view name(in the double brackets)
 
+
+        -->
+        <h1>What's your Name: </h1> <input type="text" placeholder="Search names" data-ng-model = "name" /> {{ "Hello " +name  }}
+        
+    </div>
+    
+    <!-- ===== GETTING INTO REPEAT ======== =-->
+    <div class="row"
+        data-ng-init="names = ['Zave Ngong', 'Napul Everlasting', 'Heedy Kong', 'Shriva Awesome']"  >
+        
+        <h1>Looping with <STRONG>ng-repeat</STRONG> Directive</h1>
+        <ul>
+            <li data-ng-repeat = "name in names "> {{ name }}</li>
+        </ul>
+        
+    </div>
+    
+    
+    <!-- ======== MORE INTO REPEAT WITH DICTIONARY -->
+    <div data-ng-init="customers=
+                       [                       
+                           {name:'James Odongo', city:'Kinoo'},
+                           {name:'John Alfred', city:'Rongai'},
+                           {name:'Albert Einstain', city:'Thika'},
+                           {name:'Daniel Brond', city:'Bungoma'},
+                           {name:'Mercy Cate', city:'Kericho'}
+                       ]">
+        <ul>
+            <!-- === Where To repeat my data. The view to re-use =======-->
+            <li data-ng-repeat="customer in customers | filter:name | orderBy:'city' ">
+                <h3>{{ customer.name }} </h3>
+                <p><i>{{ "City: " +customer.city }}</i></p>
+            </li>
+        </ul>
+        
+        
+    </div>
+    
+    
+    
     <!-- =========== ADDING ANGULAR=================-->
     <script src="js/angular.min.js"></script>
     
