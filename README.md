@@ -25,7 +25,7 @@ NB:
 - Learn CONTROLLERS and how to use them
 
 
-### Modules, Routes and Factories
+# Modules, Routes and Factories
 
 - Learn Modules and wrap things inside it
 
@@ -57,4 +57,15 @@ Make sure that my *ng-app* points up to *demoApp* in the strings. I could even t
 
 2. The second way is you could actually pass a name as a string with an anonymous function.
 The third way is we can come in and create controller variables and initialize them all together
+
+
+## ROUTING
+
+This is so much useful when we want to load new views into our shell page.
+
+Two way for routing:
+1. Embedding the view as a script template inside the shell page. Then referencing it via its 'id'
+
+2. Having the Views on the server then tell Angular "the template URL fir what I want to load" and then you give it the URL to the server
+
 
