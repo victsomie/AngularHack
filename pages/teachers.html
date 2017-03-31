@@ -27,33 +27,16 @@
 <body >
 
         <div class="row large-expand">
-        
-
-        <!--   
-            <input data-ng-model = "name" /> {{ name }}
-            
-            Says: Create in memory data property name called name(in quotes)
-            then BIND that property to the view name(in the double brackets)
-        -->
-        <h1>What's the course you are looking for </h1> 
-            <input type="text" placeholder="Search student by course" data-ng-model = "name" /> {{ "Hello " +name  }}
-        
+            <h1>This is teachers Page</h1>
     </div>
     
-        <!--=========== ADDING AND USING CONTROLLER HERE -->
-    <div class="row">
-        <h3>Adding a simple controller. [Using students sample data]</h3>
-        <ul  ng-controller="SimpleController as stores">
-            <li ng-repeat="student in stores.students | filter: name">
-                {{ student.name }} ~ <i>{{ student.course }}</i>
-            </li>
-        </ul>
-    </div>
+    
+    
     
     
     
     <!-- =========== ADDING ANGULAR=================-->
-    <script src="/js/angular.min.js"></script>
+    <script src="../js/angular.min.js"></script>
     
     
         

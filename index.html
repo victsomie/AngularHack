@@ -10,7 +10,7 @@
 
 -->
 <!--<html ng-app=""  class="no-js" lang="en" dir="ltr">-->
-<html ng-app="store"  class="no-js" lang="en" dir="ltr">
+<html  ng-app="store" class="no-js" lang="en" dir="ltr">
 
 <head>
     <meta charset="utf-8">
@@ -26,67 +26,7 @@
 </head>
 
 <body >
-    <div class="row large-expand">
-        
 
-        <!--   
-            <input data-ng-model = "name" /> {{ name }}
-            
-            Says: Create in memory data property name called name(in quotes)
-            then BIND that property to the view name(in the double brackets)
-        -->
-        <h1>What's your Name: </h1> <input type="text" placeholder="Search names" data-ng-model = "name" /> {{ "Hello " +name  }}
-        
-    </div>
-    
-    <!-- ===== GETTING INTO REPEAT ======== =-->
-    <div class="row"
-        data-ng-init="names = ['Zave Ngong', 'Napul Everlasting', 'Heedy Kong', 'Shriva Awesome']"  >
-        
-        <h1>Looping with <STRONG>ng-repeat</STRONG> Directive</h1>
-        <ul>
-            <li data-ng-repeat = "name in names "> {{ name }}</li>
-        </ul>
-        
-    </div>
-    
-    
-    <!-- ======== MORE INTO REPEAT WITH DICTIONARY -->
-    <hr>
-    <div data-ng-init="customers=
-                       [                       
-                           {name:'James Odongo', city:'Kinoo'},
-                           {name:'John Alfred', city:'Rongai'},
-                           {name:'Albert Einstain', city:'Thika'},
-                           {name:'Daniel Brond', city:'Bungoma'},
-                           {name:'Mercy Cate', city:'Kericho'}
-                       ]">
-        <ul>
-            <!-- === Where To repeat my data. The view to re-use =======-->
-            <li data-ng-repeat="customer in customers | filter:name | orderBy:'city' ">
-                <h3>{{ customer.name }} </h3>
-                <p><i>{{ "City: " +customer.city }}</i></p>
-            </li>
-        </ul>
-        
-        
-    </div>
-    <hr>
-    
-    <!--=========== ADDING AND USING CONTROLLER HERE -->
-    
-    <div class="row">
-        <h3>Adding a simple controller. [Using students sample data]</h3>
-        <ul  ng-controller="SimpleController as stores">
-            <li ng-repeat="student in stores.students | filter:name">
-                {{ student.name }} ~ <i>{{ student.course }}</i>
-            </li>
-        </ul>
-    </div>
-
-    
-
-    
     <div ng-controller= "testController" >
         
         <div ng-repeat="member in members" style="background: gray;
@@ -97,12 +37,26 @@
             
         </div>
     </div>
+    
+        <div>
+        <h1>Test injection through routing</h1>
+        <a href="#viewStakeholders">STAKEHOLDERS</a>
+        
+
+    </div>
+            <!-- ====  PLACEHOLDER FOR VIEWS === -->
+    <h1>NEW VIEWS BELOW HERE</h1>
+    
+        
+    <div data-ng-view></div>
 
     
     
     
     <!-- =========== ADDING ANGULAR=================-->
     <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+<!--    <script src="js/index.js"></script>-->
     
     
     
@@ -126,24 +80,67 @@
     </script>
     
     
-        
+<!--        ================ CONTROLLERS AND ROUTINGS ====================-->
     <script>
-        
-    
-        // Creating a simple controller using students data
-//        function SimpleController($scope){
-//            $scope.students=[];
-//            
-//            $scope.students = [
-//                {name: 'Maureen Kerubo', course: 'BBIT'},
-//                {name: 'Kim Jone Siwa', course: 'Comp Sc.'},
-//                {name: 'Jane Kamande', course: 'Comp Engineering'},
-//                {name: 'Dennis Ettary', course: 'Graphics Design'},
-//                {name: 'Evans Ngure', course: 'Maths for Science'}
-//            ];
-                
-//        }
-        
+        (function () {
+
+            // Below we create  module named 'store'
+            var app = angular.module("store", ['ngRoute']);
+
+
+
+
+            // To the module 'store' we add a controller named 'SimpleController'
+            app.controller('SimpleController', [function(){
+                this.students = [
+                    {name: 'Maureen Kerubo', course: 'BBIT'},
+                    {name: 'Kim Jone Siwa', course: 'Comp Sc.'},
+                    {name: 'Jane Kamande', course: 'Comp Engineering'},
+                    {name: 'Dennis Ettary', course: 'Graphics Design'},
+                    {name: 'Evans Ngure', course: 'Maths for Science'}
+                ];
+            }]);
+
+
+
+            // Adding multiple controllers
+            var controllers = {};
+            controllers.testController = function ($scope){
+                    $scope.members = [
+                        {firstName : 'Peter',secondName : 'Habert',location :'Turkey'},
+                        {firstName : 'James',secondName : 'Odongo',location :'Mombasa'}
+                    ];
+                };
+
+            app.controller(controllers);
+            
+            
+                        // CONFIG ROUTING etc
+
+            app.config(['$routeProvider',
+                    function($routeProvider, $locationProvider) {
+                        $routeProvider
+                            .when('/', {
+                                templateUrl: 'allitems.html',
+                                controller: 'SimpleController'
+                            })
+                            .when('/viewStakeholders', {
+                                templateUrl: 'stakeholders.html',
+                                controller: 'SimpleController'
+                            })
+                            .when('/view2', {
+                                templateUrl: 'pages/teachers.html',
+                                controller: 'SimpleController'
+                            })
+                            .otherwise({
+                                redirectTo: '/'
+                            });
+
+                    }]);
+
+
+        })();
+
         
     </script>
     

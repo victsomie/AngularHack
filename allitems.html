@@ -1,0 +1,62 @@
+
+    <div class="row large-expand">
+        
+
+        <!--   
+            <input data-ng-model = "name" /> {{ name }}
+            
+            Says: Create in memory data property name called name(in quotes)
+            then BIND that property to the view name(in the double brackets)
+        -->
+        <h1>What's your Name: </h1> <input type="text" placeholder="Search names" data-ng-model = "name" /> {{ "Hello " +name  }}
+        
+    </div>
+    
+    <!-- ===== GETTING INTO REPEAT ======== =-->
+    <div class="row"
+        data-ng-init="names = ['Zave Ngong', 'Napul Everlasting', 'Heedy Kong', 'Shriva Awesome']"  >
+        
+        <h1>Looping with <STRONG>ng-repeat</STRONG> Directive</h1>
+        <ul>
+            <li data-ng-repeat = "name in names "> {{ name }}</li>
+        </ul>
+        
+    </div>
+    
+    
+    <!-- ======== MORE INTO REPEAT WITH DICTIONARY -->
+    <hr>
+    <div data-ng-init="customers=
+                       [                       
+                           {name:'James Odongo', city:'Kinoo'},
+                           {name:'John Alfred', city:'Rongai'},
+                           {name:'Albert Einstain', city:'Thika'},
+                           {name:'Daniel Brond', city:'Bungoma'},
+                           {name:'Mercy Cate', city:'Kericho'}
+                       ]">
+        <ul>
+            <!-- === Where To repeat my data. The view to re-use =======-->
+            <li data-ng-repeat="customer in customers | filter:name | orderBy:'city' ">
+                <h3>{{ customer.name }} </h3>
+                <p><i>{{ "City: " +customer.city }}</i></p>
+            </li>
+        </ul>
+        
+        
+    </div>
+    <hr>
+    
+    <!--=========== ADDING AND USING CONTROLLER HERE -->
+    
+    <div class="row">
+        <h3>Adding a simple controller. [Using students sample data]</h3>
+        <ul  ng-controller="SimpleController as stores">
+            <li ng-repeat="student in stores.students | filter:name">
+                {{ student.name }} ~ <i>{{ student.course }}</i>
+            </li>
+        </ul>
+    </div>
+
+    
+
+    
