@@ -29,18 +29,30 @@
 
     <div ng-controller= "testController" >
         
-        <div ng-repeat="member in members" style="background: gray;
+        <!--
+        <div ng-repeat="member in members" style="background: gra;
     border-style: ridge; border-bottom-color: red;">
             
             <h6 style="background:;"> {{ member.firstName }} </h6>
             <p> <strong>Location :</strong> {{ member.location }}</p>
             
         </div>
+        -->
+    </div>
+    <div>
+    <nav style="position:fixed; display:block; width:100%; background: white; color:black; height:30px; " >
+        <a href= "#home">Home</a>
+    
+        | <a href="#viewStakeholders">STAKEHOLDERS</a> | 
+        <a href="#allItems">  Go to all items</a> |
+        <a href="#gallery">Gallery</a> |
+    </nav>
     </div>
     
-        <div>
-        <h1>Test injection through routing</h1>
-        <a href="#viewStakeholders">STAKEHOLDERS</a>
+        
+    <div  class="row large-expand" >
+        <h1 style="margin-top: 80px;">Test injection through routing</h1>
+        
         
 
     </div>
@@ -56,93 +68,9 @@
     <!-- =========== ADDING ANGULAR=================-->
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
-<!--    <script src="js/index.js"></script>-->
     
     
-    
-    <!--==== Testing controller knowledge =========-->
-    <script>
-        
-        /*
-        var demoApp = angular.module("demoApp",[]);
-        function testController($scope){
-            $scope.members = [{
-                firstName : 'James',
-                secondName : 'Odongo',
-                location : 'Mombasa'
-            }];
-        }
-        
-        demoApp.controller("testController", testController);
-        
-        */
-        
-    </script>
-    
-    
-<!--        ================ CONTROLLERS AND ROUTINGS ====================-->
-    <script>
-        (function () {
 
-            // Below we create  module named 'store'
-            var app = angular.module("store", ['ngRoute']);
-
-
-
-
-            // To the module 'store' we add a controller named 'SimpleController'
-            app.controller('SimpleController', [function(){
-                this.students = [
-                    {name: 'Maureen Kerubo', course: 'BBIT'},
-                    {name: 'Kim Jone Siwa', course: 'Comp Sc.'},
-                    {name: 'Jane Kamande', course: 'Comp Engineering'},
-                    {name: 'Dennis Ettary', course: 'Graphics Design'},
-                    {name: 'Evans Ngure', course: 'Maths for Science'}
-                ];
-            }]);
-
-
-
-            // Adding multiple controllers
-            var controllers = {};
-            controllers.testController = function ($scope){
-                    $scope.members = [
-                        {firstName : 'Peter',secondName : 'Habert',location :'Turkey'},
-                        {firstName : 'James',secondName : 'Odongo',location :'Mombasa'}
-                    ];
-                };
-
-            app.controller(controllers);
-            
-            
-                        // CONFIG ROUTING etc
-
-            app.config(['$routeProvider',
-                    function($routeProvider, $locationProvider) {
-                        $routeProvider
-                            .when('/', {
-                                templateUrl: 'allitems.html',
-                                controller: 'SimpleController'
-                            })
-                            .when('/viewStakeholders', {
-                                templateUrl: 'stakeholders.html',
-                                controller: 'SimpleController'
-                            })
-                            .when('/view2', {
-                                templateUrl: 'pages/teachers.html',
-                                controller: 'SimpleController'
-                            })
-                            .otherwise({
-                                redirectTo: '/'
-                            });
-
-                    }]);
-
-
-        })();
-
-        
-    </script>
     
     
     <script src="js/vendor/jquery.js"></script>
