@@ -27,7 +27,32 @@ $(document).foundation();
 
             // Adding multiple controllers
             var controllers = {};
-            controllers.testController = function ($scope){
+            
+            
+                        
+            // Creating a factory
+            app.factory('simpleFactory', function(){
+                // NB: You could do your calls for external data here now
+                var testimonials = [
+                    {who: "James Edmond", from: "Cairo", content: "We have loved your work"},
+                    {who: "Lonny Pascal", from: "Johannesberg", content: "Some real good stuff there. "},
+                ]; 
+                
+                // Create an empty factory object
+                var factory = {};
+                
+                // Create the methods to do 'stuff' - under the factory object created
+                factory.getTestimonials = function(){
+                    return testimonials;
+                };
+                
+                // MUST HAVE THIS RETURN
+                return factory;
+                
+            });
+            
+            // Note that simpleFactory (a factory is put in here)
+            controllers.testController = function ($scope, simpleFactory){
                     
                 $scope.members = [
                     {firstName : 'Peter',secondName : 'Habert',location :'Turkey'},
@@ -35,13 +60,21 @@ $(document).foundation();
                 ];
                 $scope.images = [
                     {name: 'Esther Raw', photo : 'img/eswithfriend.jpg'},
-                    {name: 'Esther Raw', photo : 'img/eswithfriend2.jpg'},                        {name: 'Esther Raw', photo : 'img/eswithfriend.jpg'},
+                    {name: 'Esther Edited', photo : 'img/eswithfriend2.jpg'},                        {name: 'Esther Raw', photo : 'img/eswithfriend.jpg'},
                     {name: 'Esther Raw', photo : 'img/eswithfriend2.jpg'}
                 ];
-                $scope.testimonials = [
-                    {who: "James Edmond", from: "Cairo", content: "We have loved your work"},
-                    {who: "Lonny Pascal", from: "Johannesberg", content: "Some real good stuff there. "},
-                ];                
+                $scope.testimonials = [];      
+
+                $scope.testimonials = simpleFactory.getTestimonials(); 
+                
+                // You could create testimonials this way too   
+                /*
+                init();
+                function init(){
+                    $scope.testimonials = simpleFactory.getTestimonials(); 
+                }
+                */
+                
                 
                 $scope.addTestimonial = function (){
                     $scope.testimonials.push(
@@ -92,6 +125,7 @@ $(document).foundation();
                             });
 
                     }]);
+
 
 
         })();

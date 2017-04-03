@@ -4,14 +4,18 @@
         <p > {{ image.name }}</p>
     </div>
     
-    <div class="row">
+    <hr>
+    <div class="row large-up-3">
+         <h1>testimonials</h1>
         <div class="column" data-ng-repeat = "testimonial in testimonials">
+           
             
                 <p>{{ testimonial.content }}</p>
                 <h4> {{ testimonial.who }} ~ {{ testimonial.from }} </h4>
         
         </div>
     </div>
+    <hr>
     
     <div class="row">
         <h2>Add a new testimonial</h2>
