@@ -15,10 +15,13 @@
     
     <div class="row">
         <h2>Add a new testimonial</h2>
-        Name: <input type="text" data-ng-model="newTestimonial.who">
-        Message here: <input type="text" data-ng-model="newTestimonial.content">
-        Where from: <input type="text" data-ng-model="newTestimonial.from">
-        <button class="button warning" data-ng-click ="addTestimonial()" >Add testimonial</button>
+        <p><b>HINT: * Must be filled</b></p>
+        Name* : <input type="text" data-ng-model="newTestimonial.who">
+        Message here* : <input type="text" data-ng-model="newTestimonial.content">
+        Where from*: <input type="text" data-ng-model="newTestimonial.from">
+        <button class="button warning" 
+                data-ng-click ="addTestimonial()"
+                 data-ng-disabled="!newTestimonial.who || !newTestimonial.content || !newTestimonial.from "> Add testimonial</button>
         
         
     </div>
