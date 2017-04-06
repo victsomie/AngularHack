@@ -52,7 +52,22 @@ $(document).foundation();
             });
             
             // Note that simpleFactory (a factory is put in here)
-            controllers.testController = function ($scope, simpleFactory){
+            controllers.testController = function ($scope, simpleFactory, $http){
+                
+                // $scope.testimonials = []; 
+                
+                
+                // Adding JSON data from an external file
+                // NB: include $http as parameter in this function
+                var url="data.txt";
+                $http.get(url).success( function(response) {
+                    
+                    // Get the JSON file containing your data (in our case testmonials)
+                    $scope.testimonials = response;
+                    
+                    // Combine (concat) the data from external file with the one from 'factory'
+                    $scope.testimonials =$scope.testimonials.concat($scope.testimonialsFromFactory);
+                });
                     
                 $scope.members = [
                     {firstName : 'Peter',secondName : 'Habert',location :'Turkey'},
@@ -63,10 +78,17 @@ $(document).foundation();
                     {name: 'Esther Edited', photo : 'img/eswithfriend2.jpg'},                        {name: 'Esther Raw', photo : 'img/eswithfriend.jpg'},
                     {name: 'Esther Raw', photo : 'img/eswithfriend2.jpg'}
                 ];
-                $scope.testimonials = [];      
+                 
+                     
 
-                $scope.testimonials = simpleFactory.getTestimonials(); 
+                 // $scope.testimonials = []; 
                 
+                // Getting data from factory
+                 $scope.testimonialsFromFactory = simpleFactory.getTestimonials(); 
+                 
+                // $scope.testimonials2 = simpleFactory.getTestimonials(); 
+                // $scope.testimonials = $scope.testimonials.concat($scope.testimonials2);
+                 
                 // You could create testimonials this way too   
                 /*
                 init();
