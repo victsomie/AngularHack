@@ -1,5 +1,7 @@
 <div class="row">
     <div class="column large-3"  data-ng-repeat = "image in images">
+        
+            <h6>This is {{$index +1 }} </h6>
         <img ng-src=" {{ image.photo }}" />
         <p > {{ image.name }}</p>
     </div>
@@ -20,7 +22,7 @@
     <div class="row">
         <h2>Add a new testimonial</h2>
         <p><b>HINT: * Must be filled</b></p>
-        Name* : <input type="text" data-ng-model="newTestimonial.who" required>
+        Name* : <input type="text" data-ng-model="newTestimonial.who" required >
         Message here* : <input type="text" data-ng-model="newTestimonial.content">
         Where from*: <input type="text" data-ng-model="newTestimonial.from">
         <button class="button warning" 

@@ -37,7 +37,7 @@
     <ul>
         <!-- === Where To repeat my data. The view to re-use =======-->
         <li data-ng-repeat="customer in customers | filter:name | orderBy:'city' ">
-            <h3>{{ customer.name }} </h3>
+            <h3>{{  customer.name }} </h3>
             <p><i>{{ "City: " +customer.city }}</i></p>
         </li>
     </ul>
@@ -57,7 +57,9 @@
     </ul>    
 -->
     <ul>
-        <li ng-repeat="student in students"></li>
+        <li ng-repeat="student in students">
+            <p>{{student.name}}</p>
+        </li>
     </ul>
 </div>
 

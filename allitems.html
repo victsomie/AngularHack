@@ -50,8 +50,9 @@
     
     <div class="row">
         <h3>Adding a simple controller. [Using students sample data]</h3>
-        <ul  ng-controller="SimpleController as stores">
-            <li ng-repeat="student in stores.students | filter:name">
+<!--        <ul  ng-controller="SimpleController as stores">-->
+        <ul>
+            <li ng-repeat="student in students | filter:name">
                 {{ student.name }} ~ <i>{{ student.course }}</i>
             </li>
         </ul>

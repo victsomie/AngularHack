@@ -1,0 +1,121 @@
+<!doctype html>
+
+<!-- ng-app says initialize the Angular app through the angular script 
+    
+    You could also use:
+        data-ng-app or
+        data-ng-app=""
+    
+    It still works
+
+-->
+<html ng-app="store"  class="no-js" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Learning of Angular</title>
+    <link rel="stylesheet" href="/css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <div class="row large-expand">
+            <h1 class="">This is teachers Page</h1>
+    </div>
+
+        <div > 
+            <table>
+                <thead>
+                  <tr>
+<!--                      <th colspan="4">Drivers Championship Standings</th></tr>-->
+                      <th colspan="3">{{ studentsNumber}} Drivers Championship Standings</th>
+                    </tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    
+                </thead>
+                <tbody>
+                  <tr data-ng-repeat="student in students | orderBy: 'course'"> 
+<!--                      <a href="#student/{{students.indexOf(student)}}">-->
+                      
+                          <div>
+
+                              <td>
+                                  <a href="#studentIndex/{{ students.indexOf(student)}}">
+                                      {{students.indexOf(student)}}
+                                  </a>
+                                     
+                              </td>
+
+                              <!-- Test this line using array list index -->
+<!--                              <td><a href="#studentName/{{ student.name}}">{{student.name}}</a><br> -->
+                              <td><a href="#studentName/{{ students.indexOf(student)}}">{{student.name}}</a><br> 
+                                </td>
+                                <td>{{student.course}}</td>
+                          </div>
+                        
+                      
+                  </tr>
+                </tbody>
+
+            </table>
+            <h1>Displaying nested data <b>ng-if</b></h1>
+            <ul data-ng-repeat="student in students | orderBy: 'course'"> 
+                <li> {{student.name}}
+                    <div ng-if="student.unitsTaken.length>0">
+                        Courses
+                        <ul data-ng-repeat="unit in student.unitsTaken">
+
+                            <li>{{unit}}</li>
+                        </ul>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+        
+    
+    
+    
+    <!-- =========== ADDING ANGULAR=================-->
+    <script src="../js/angular.min.js"></script>
+    
+    
+        
+    <script>
+        
+        
+        
+        
+        // Creating a simple controller using students data
+//        function SimpleController($scope){
+//            $scope.students=[];
+//            
+//            $scope.students = [
+//                {name: 'Maureen Kerubo', course: 'BBIT'},
+//                {name: 'Kim Jone Siwa', course: 'Comp Sc.'},
+//                {name: 'Jane Kamande', course: 'Comp Engineering'},
+//                {name: 'Dennis Ettary', course: 'Graphics Design'},
+//                {name: 'Evans Ngure', course: 'Maths for Science'}
+//            ];
+                
+//        }
+        
+        
+    </script>
+    
+    
+    <script src="../js/vendor/jquery.js"></script>
+    <script src="../js/vendor/what-input.js"></script>
+    <script src="../js/vendor/foundation.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>

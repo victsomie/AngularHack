@@ -1,0 +1,16 @@
+<h1><bold>Blank</bold></h1>
+
+<h2>All students</h2>
+<br>{{ students}}
+<h3>Specific Student data</h3>
+{{ specificStudent }}
+<h1><b>
+    Student Name: {{ specificStudent.name }}<br>
+    Student Course: {{ specificStudent.course }}
+    </b>
+</h1>
+
+<h1>Fetch units of the user</h1>
+<li ng-repeat="unit in specificStudent.unitsTaken">
+    {{ unit }}
+</li>

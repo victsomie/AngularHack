@@ -69,3 +69,10 @@ Two way for routing:
 2. Having the Views on the server then tell Angular "the template URL fir what I want to load" and then you give it the URL to the server
 
 * ng-view * now represents the placeholder where the views wshall be injected
+
+
+
+# Official References
+1. [Full Official Documentation](https://docs.angularjs.org/guide)
+
+
