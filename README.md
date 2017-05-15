@@ -72,7 +72,10 @@ Two way for routing:
 
 
 
-# Official References
+# Official and Awesome References
 1. [Full Official Documentation](https://docs.angularjs.org/guide)
+2. [Routing (ngroute, $route, $routeProvider, $routeParams)](http://www.guru99.com/angularjs-routes.html)
+
+
 
 

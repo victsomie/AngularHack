@@ -9,34 +9,16 @@
     It still works
 
 -->
-<html ng-app="store"  class="no-js" lang="en" dir="ltr">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Learning of Angular</title>
-    <link rel="stylesheet" href="/css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
-    <style>
-
-
-    </style>
-</head>
 
 <body>
     <div class="row large-expand">
             <h1 class="">This is STUDENTS Page</h1>
-
-        
     </div>
-
-        <div > 
             <table>
                 <thead>
                   <tr>
-<!--                      <th colspan="4">Drivers Championship Standings</th></tr>-->
-                      <th colspan="3">{{ studentsNumber}} Drivers Championship Standings</th>
+                      <th colspan="3">Displaying {{ studentsNumber}} Students from database</th>
                     </tr>
                     <th>No.</th>
                     <th>Name</th>
@@ -44,21 +26,16 @@
                     
                 </thead>
                 <tbody>
-                  <tr data-ng-repeat="student in students | orderBy: 'course'"> 
-<!--                      <a href="#student/{{students.indexOf(student)}}">-->
-                      
-                          <div>
-
-                              <td>
-                                  <a href="#studentIndex/{{ students.indexOf(student)}}">
-                                      {{students.indexOf(student)}}
-                                  </a>
-                                     
-                              </td>
-
+                  <tr data-ng-repeat="student in students | orderBy: 'course'">
+                      <div>
+                          <td>
+                              <a href="studentIndex/{{ students.indexOf(student)}}" style="padding: 10px 30px; background: #c111f0; color:white;">
+                                    {{students.indexOf(student)}}
+                              </a>
+                          </td>
                               <!-- Test this line using array list index -->
 <!--                              <td><a href="#studentName/{{ student.name}}">{{student.name}}</a><br> -->
-                              <td><a href="#studentName/{{ students.indexOf(student)}}">{{student.name}}</a><br> 
+                              <td><a href="studentName/{{ students.indexOf(student)}}">{{student.name}}</a><br> 
                                 </td>
                                 <td>{{student.course}}</td>
                           </div>
@@ -68,6 +45,8 @@
                 </tbody>
 
             </table>
+    
+    
             <h1>Displaying nested data <b>ng-if</b></h1>
             <ul data-ng-repeat="student in students | orderBy: 'course'"> 
                 <li> {{student.name}}
@@ -76,12 +55,14 @@
                         <ul data-ng-repeat="unit in student.unitsTaken">
 
                             <li>{{unit}}</li>
+                            
+                        
                         </ul>
                     </div>
                     
                 </li>
             </ul>
-        </div>
+        
         
     
     

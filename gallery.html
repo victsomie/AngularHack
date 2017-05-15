@@ -1,4 +1,11 @@
 <div class="row">
+    <welcome></welcome>
+    <h6>Display marks here below</h6>
+    <div ng-repeat="mark in marks">
+        {{ mark }} points
+    </div>
+    <div>TOTAL : {{ marksTotal()}}</div>
+    
     <div class="column large-3"  data-ng-repeat = "image in images">
         
             <h6>This is {{$index +1 }} </h6>

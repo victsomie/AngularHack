@@ -3,22 +3,29 @@ $(document).foundation();
 // Below we create  module named 'store'
 var app = angular.module("store", ['ngRoute']);
 
+app.constant("baseUrl", "http://127.0.0.1:58548/index.html");
 
+
+
+//// / CUSTOM A DIRECTIVE ==============
+app.directive("welcome", function() {
+  return {
+    restrict: "E",
+    template: " "
+      + "<div style='background:yellow'>Howdy there! You look splendid.</div>" 
+      + "<p class='container'>This is really awesome!</p>"
+      + "<p>Really awesome {{images}}</p>"
+  }
+});
 // To the module 'store' we add a controller named 'SimpleController'
-app.controller('SimpleController', function($scope){
-    $scope.students = [
-        {name: 'Maureen Keruboxx', course: 'BBIT',
-         unitsTaken: ["Intro. to comp", "Organizationl behavior"]
-        },
-        {name: 'Kim Jone Siwa', course: 'Comp Sc.'},
-        {name: 'Jane Kamande', course: 'Comp Engineering'},
-        {name: 'Dennis Ettary', course: 'Graphics Design'},
-        {name: 'Evans Ngure', course: 'Maths for Science'}
-    ];
+app.controller('SimpleController', function($scope, simpleFactory){
 
-    $scope.studentsNumber = $scope.students.length;
+   
 
-});            
+});     
+
+
+
 // To the module 'store' we add a controller named 'SimpleController'
 app.controller('studentController', function($scope, simpleFactory, $routeParams){
 
@@ -37,28 +44,26 @@ app.controller('studentController', function($scope, simpleFactory, $routeParams
 
 // Adding multiple controllers
 var controllers = {};
-controllers.xSimpleController = function($scope){
-    $scope.students = [
-        {name: 'Maureen Kerubo', course: 'BBIT'},
-        {name: 'Kim Jone Siwa', course: 'Comp Sc.'},
-        {name: 'Jane Kamande', course: 'Comp Engineering'},
-        {name: 'Dennis Ettary', course: 'Graphics Design'},
-        {name: 'Evans Ngure', course: 'Maths for Science'}
-        ];
 
+controllers.SimpleController = function($scope, simpleFactory, $route){
+    $scope.students = simpleFactory.getStudents();
+    $scope.studentsNumber = $scope.students.length;
+    $scope.dataFromRoute = $route.current.myText;
 }
 
 // Creating a factory
-app.factory('simpleFactory', function($http){
+app.factory('simpleFactory', function($http, $route){
     // NB: You could do your calls for external data here now
+     // Create an empty factory object
+    var factory = {}; // This is what we will return
+    
+    
     var testimonials = [
         {who: "James Edmond", from: "Cairo", content: "We have <br>loved your work"},
         {who: "Lonny Pascal", from: "Johannesberg", content: "Some real good stuff there. "},
     ]; 
 
-    // Create an empty factory object
-    var factory = {};
-
+   
     // Create the methods to do 'stuff' - under the factory object created
     factory.getTestimonials = function(){
         return testimonials;
@@ -71,7 +76,11 @@ app.factory('simpleFactory', function($http){
              "Intro. to comp", "Organizationl behavior"
          ]
         },
-        {name: 'Kim Jone Siwa', course: 'Comp Sc.'},
+        {name: 'Kim Jone Siwa', course: 'Comp Sc.', unitsTaken: [
+            "Biology", "Zoology", "Bootany", "Physics", "Bbabsbsd", "Kisw"
+        ]
+        
+        },
         {name: 'Jane Kamande', course: 'Comp Engineering'},
         {name: 'Dennis Ettary', course: 'Graphics Design'},
         {name: 'Evans Ngure', course: 'Maths for Science'}
@@ -120,10 +129,9 @@ app.factory('simpleFactory', function($http){
 });
 
 // Note that simpleFactory (a factory is put in here)
-controllers.testController = function ($scope, simpleFactory, $http){
+controllers.testController = function ($scope, $route, simpleFactory, $http ){
 
     // $scope.testimonials = []; 
-
 
     // Adding JSON data from an external file
     // NB: include $http as parameter in this function
@@ -136,6 +144,23 @@ controllers.testController = function ($scope, simpleFactory, $http){
         // Combine (concat) the data from external file with the one from 'factory'
         $scope.testimonials =$scope.testimonials.concat($scope.testimonialsFromFactory);
     });
+    
+    
+    $scope.marks = [10, 30, 40, 50];
+    var total = 0;
+    // $scope.marksLength = $scope.marks.length;
+
+    $scope.marksTotal = function(){
+         $scope.sum = 0;
+            
+        for(var x = 0; x< $scope.marks.length; x++){
+            $scope.sum = $scope.sum +$scope.marks[x];
+            // console.log("This is>>" + $scope.sum);
+        }
+        
+        return $scope.sum;
+    
+    };
     
 
     $scope.members = [
@@ -182,10 +207,12 @@ controllers.testController = function ($scope, simpleFactory, $http){
 app.controller(controllers);
 
 
-    // CONFIG ROUTING etc
+    
+// CONFIG ROUTING etc
+app.constant("baseUrl","http://127.0.0.1:51595/index.html"); // NB: its NOT a key-value pair
 
-app.config(['$routeProvider',
-function($routeProvider) {
+app.config(['$routeProvider', '$locationProvider',
+function($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'gallery.html',
@@ -197,6 +224,7 @@ function($routeProvider) {
         })                             
 
         .when('/allItems', {
+            myText: 'THIS ROUTE DATA WORKS!!!!',
             templateUrl: 'allitems.html',
             controller: 'SimpleController'
         })
@@ -222,7 +250,14 @@ function($routeProvider) {
         })
         .otherwise({
             redirectTo: '/'
-        });
+        })
+    $locationProvider.html5Mode(true);
+//    $locationProvider.html5Mode(
+//        {
+////            enabled: true,
+//            requireBase: false
+//        });
+//    
 
 }]);
 
