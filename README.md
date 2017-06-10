@@ -1,5 +1,4 @@
 # Learning AngularJS basics
-
 Getting some touch on angular Js is really awesome
 
 When getting started ALWAYS include the angular.js resource
