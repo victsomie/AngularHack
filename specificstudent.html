@@ -1,21 +1,24 @@
-<h1><bold>Blank</bold></h1>
+<div class="animated fadeIn">
+        <h1><bold>Blank</bold></h1>
 
-<p>{{ driversDB}}</p>
-<h2>All students</h2>
-<br>{{ students}}
-<h3>Specific Student data</h3>
-{{ specificStudent }}
-<h1><b>
-    Student Name: {{ specificStudent.name }}<br>
-    Student Course: {{ specificStudent.course }}
-    </b>
-</h1>
+        <p>{{ driversDB}}</p>
+        <h2>All students</h2>
+        <br>{{ students}}
+        <h3>Specific Student data</h3>
+        {{ specificStudent }}
+        <h1><b>
+            Student Name: {{ specificStudent.name }}<br>
+            Student Course: {{ specificStudent.course }}
+            </b>
+        </h1>
 
-<div >
-    <h1 >Fetch units of the user</h1>
-    <li ng-repeat="unit in specificStudent.unitsTaken">
-        {{ unit }}
-    </li>
-    
+        <div >
+            <h1 >Fetch units of the user</h1>
+            <li ng-repeat="unit in specificStudent.unitsTaken">
+                {{ unit }}
+            </li>
+
+
+        </div>
     
 </div>

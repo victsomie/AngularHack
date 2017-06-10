@@ -1,17 +1,4 @@
-<!doctype html>
-
-<!-- ng-app says initialize the Angular app through the angular script 
-    
-    You could also use:
-        data-ng-app or
-        data-ng-app=""
-    
-    It still works
-
--->
-
-
-<body>
+<div class=""  data-aos="fade" data-aos-delay="100" data-aos-duration="1000">
     <div class="row large-expand">
             <h1 class="">This is STUDENTS Page</h1>
     </div>
@@ -48,8 +35,11 @@
     
     
             <h1>Displaying nested data <b>ng-if</b></h1>
-            <ul data-ng-repeat="student in students | orderBy: 'course'"> 
-                <li> {{student.name}}
+            <ul  data-ng-repeat="student in students"> 
+<!--                <li data-ng-repeat="student in students | orderBy: 'course'"-->
+                <li data-aos="fade-down" data-aos-delay="{{myDelaysIncreament($index) }}" data-aos-duration="3000" > 
+                    {{$index}}
+                    {{student.name}}
                     <div ng-if="student.unitsTaken.length>0">
                         Courses
                         <ul data-ng-repeat="unit in student.unitsTaken">
@@ -59,46 +49,17 @@
                         
                         </ul>
                     </div>
+                    <!--
+                    <div ng-hide= "student.unitsTaken.length>0"  class="animated fadeInUp">
+                        <h1>No courses for this students</h1>
+                    </div>
+                    -->
                     
                 </li>
             </ul>
+</div>
         
         
     
     
-    
-    <!-- =========== ADDING ANGULAR=================-->
-    <script src="../js/angular.min.js"></script>
-    
-    
-        
-    <script>
-        
-        
-        
-        
-        // Creating a simple controller using students data
-//        function SimpleController($scope){
-//            $scope.students=[];
-//            
-//            $scope.students = [
-//                {name: 'Maureen Kerubo', course: 'BBIT'},
-//                {name: 'Kim Jone Siwa', course: 'Comp Sc.'},
-//                {name: 'Jane Kamande', course: 'Comp Engineering'},
-//                {name: 'Dennis Ettary', course: 'Graphics Design'},
-//                {name: 'Evans Ngure', course: 'Maths for Science'}
-//            ];
-                
-//        }
-        
-        
-    </script>
-    
-    
-    <script src="../js/vendor/jquery.js"></script>
-    <script src="../js/vendor/what-input.js"></script>
-    <script src="../js/vendor/foundation.js"></script>
-    <script src="../js/app.js"></script>
-</body>
-
-</html>
+ 

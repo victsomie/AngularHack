@@ -24,7 +24,13 @@
     <meta name="generator" content="Joomla! - Open Source Content Management">
     
     <title>First Learning of Angular</title>
-    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/foundation.css"/>
+    
+    <!--================= ANIMATING THINGS =========-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+    
+    
+    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.0.1/dist/aos.css" />
     
     <!--======== BASE URL FOR REMVING HASHING =======-->
     <link rel="stylesheet" href="css/app.css">
@@ -36,12 +42,10 @@
     </style>
 </head>
 
-<body >
+<body  >
 
     <div>
         
-        
-    
     </div>
     <div data-ng-controller="testController">
         
@@ -61,7 +65,7 @@
         <ul class="dropdown menu purple pull-right" data-dropdown-menu id="example-animated-menu" >
           <li>
             <a href="">Item 1</a>
-            <ul class="menu dropdown blue">
+            <ul class="menu dropdown blue" data-dropdown-menu>
               
                 <li>
                   <a href="#">Item 1A</a>
@@ -138,8 +142,8 @@
     </div>
     
         
-    <div  class="row large-expand" style="background: gray;">
-        <h1 style="margin-top: 80px;">Test injection through routing</h1>
+    <div  class="row large-expand" style="background: gray;" >
+        <h1 style="margin-top: 80px;" >Test injection through routing</h1>
                 
         <h1>NEW VIEWS BELOW HERE</h1>
     </div>
@@ -148,7 +152,8 @@
     <!-- ====  PLACEHOLDER FOR VIEWS === -->
     <div data-ng-view class="row"></div>
 
-    
+    <footer>
+    </footer>
     
     
     <!-- =========== ADDING ANGULAR=================-->
@@ -166,6 +171,20 @@
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
     <script src="js/app.js"></script>
+    
+    
+    
+    <!-- ===== ANIMATE ON SCROLL ==========--->
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js">
+
+    
+    </script>
+    <script>    
+        AOS.init({
+//            duration: 1200,
+            easing: 'linear'
+        });
+    </script>
 </body>
 
 </html>

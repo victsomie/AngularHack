@@ -49,6 +49,13 @@ controllers.SimpleController = function($scope, simpleFactory, $route){
     $scope.students = simpleFactory.getStudents();
     $scope.studentsNumber = $scope.students.length;
     $scope.dataFromRoute = $route.current.myText;
+    
+    $scope.myDelays = 1000;
+    $scope.myDelaysIncreament = function(whatToIncreamentWith){
+        return $scope.myDelays + (whatToIncreamentWith *300); 
+    }
+    
+    
 }
 
 // Creating a factory
@@ -92,6 +99,8 @@ app.factory('simpleFactory', function($http, $route){
         return students;
     }
     
+    
+
         // ==================  eargest.com ==================
     
     //var eargest ="http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK";
@@ -170,8 +179,10 @@ controllers.testController = function ($scope, $route, simpleFactory, $http ){
     $scope.images = [
         {name: 'Esther Raw', photo : 'img/eswithfriend.jpg'},
         {name: 'Esther Edited', photo : 'img/eswithfriend2.jpg'},                        
-            {name: 'Esther Raw', photo : 'img/eswithfriend.jpg'},
-        {name: 'Esther Raw', photo : 'img/eswithfriend2.jpg'}
+        {name: 'Esther Raw', photo : 'img/eswithfriend.jpg'},
+        {name: 'Esther Raw', photo : 'img/eswithfriend2.jpg'},
+        {name: 'Newest Image', photo : 'img/eswithfriend.jpg'}
+        
     ];
 
 

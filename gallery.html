@@ -6,12 +6,18 @@
     </div>
     <div>TOTAL : {{ marksTotal()}}</div>
     
+    
+    
     <div class="column large-3"  data-ng-repeat = "image in images">
-        
-            <h6>This is {{$index +1 }} </h6>
+    
+        <h6>This is {{$index +1 }} </h6>
         <img ng-src=" {{ image.photo }}" />
         <p > {{ image.name }}</p>
     </div>
+    
+    
+    
+    
     
     <hr>
     <div class="row large-up-3">
